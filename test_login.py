@@ -1,18 +1,19 @@
-from pydoc import browse
+
 
 import pytest
 from playwright.sync_api import sync_playwright
 
-
 @pytest.fixture
-def setup():
-    with sync_playwright() as playwright:
-        # Launch the browser
-      browse =  playwright.chromium.launch(headless=False ,slow_mode=500)
-        print("Browser setup")
-        yield
-        browse.close()
-        print("Browser teardown")
+def test_page():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        print("launch browser")
+        context = browser.new_context()
+        page = context.new_page()
+        yield page
+        browser.close()
+        print("close browser")
+
 
 
 

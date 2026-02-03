@@ -1,0 +1,14 @@
+Index: test_fileuplaod_and_download.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import os\r\nimport time\r\nfrom zipfile import ZipFile\r\n\r\nfrom playwright.sync_api import sync_playwright\r\n\r\n\r\nimport time\r\n\r\ndef test_fileupload_and_download(page):\r\n\r\n    # Open file upload page\r\n    page.goto(\"https://the-internet.herokuapp.com/upload\")\r\n\r\n    # File path (local system)\r\n    file_path = \"C:/Users/user/Downloads/image.png\"\r\n\r\n    # Upload file\r\n    page.set_input_files(\"#file-upload\", file_path)\r\n\r\n    # Submit\r\n    page.click(\"#file-submit\")\r\n\r\n    # Assert uploaded file name\r\n    uploaded_file_name = page.locator(\"#uploaded-files\").text_content().strip()\r\n    assert uploaded_file_name == 'image.png'\r\n\r\n    print(\"Uploaded file name asserted successfully\")\r\n
+===================================================================
+diff --git a/test_fileuplaod_and_download.py b/test_fileuplaod_and_download.py
+--- a/test_fileuplaod_and_download.py	(revision 72062f6f945badfe21d926fb8b5e4e49c28dccb7)
++++ b/test_fileuplaod_and_download.py	(date 1767187876545)
+@@ -25,4 +25,4 @@
+     uploaded_file_name = page.locator("#uploaded-files").text_content().strip()
+     assert uploaded_file_name == 'image.png'
+ 
+-    print("Uploaded file name asserted successfully")
++    print("Uploaded file name asserted successfully added")

@@ -25,4 +25,4 @@ def test_fileupload_and_download(page):
     uploaded_file_name = page.locator("#uploaded-files").text_content().strip()
     assert uploaded_file_name == 'image.png'
 
-    print("Uploaded file name asserted successfully")
+    print("Uploaded file name asserted successfully added")
